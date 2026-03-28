@@ -3,12 +3,14 @@ from flask_cors import CORS
 import numpy as np
 import pandas as pd
 import pickle
+import os
 
 app = Flask(__name__)
 CORS(app)
 
 # Load trained model
-model = pickle.load(open("heart_model.pkl", "rb"))
+model_path = os.path.join(os.path.dirname(__file__), '../heart_model.pkl')
+model = pickle.load(open(model_path, "rb"))
 
 FEATURE_NAMES = [
     "age", "sex", "cp", "trestbps", "chol",
