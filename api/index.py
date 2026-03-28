@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load trained model
-model_path = os.path.join(os.path.dirname(__file__), '../heart_model.pkl')
+model_path = os.path.join(os.path.dirname(__file__), 'heart_model.pkl')
 model = pickle.load(open(model_path, "rb"))
 
 FEATURE_NAMES = [
