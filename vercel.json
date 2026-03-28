@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/**/*.py": {
+      "includeFiles": "api/heart_model.pkl"
+    }
+  },
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
