@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
-import pandas as pd
+
 import pickle
 import os
 
@@ -29,10 +29,11 @@ def predict():
             if feature not in data:
                 return jsonify({"error": f"Missing feature: {feature}"}), 400
 
-        input_data = pd.DataFrame([{f: data[f] for f in FEATURE_NAMES}])
+        input_data = [[float(data[f]) for f in FEATURE_NAMES]]
 
         prediction = model.predict(input_data)
         probability = model.predict_proba(input_data)[0][1]
+
 
         return jsonify({
             "prediction": int(prediction[0]),
