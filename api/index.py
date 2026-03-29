@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import numpy as np
 import pickle
 import os
 import json
@@ -25,7 +24,6 @@ FEATURE_NAMES = [
     "ca",
     "thal",
 ]
-
 
 @app.route("/api/predict", methods=["POST"])
 def predict():
