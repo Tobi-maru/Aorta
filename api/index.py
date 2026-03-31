@@ -37,7 +37,7 @@ FEATURE_NAMES = [
 @app.route("/api/predict", methods=["POST"])
 def predict():
     if model is None:
-        return jsonify({"error": "Failed to load model", "details": model_error}), 500
+        return jsonify({"error": f"Failed to load model: {model_error}", "details": model_error}), 500
 
     try:
         data = request.get_json()
