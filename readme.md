@@ -40,8 +40,8 @@ Target:
 
 ## 📈 Model Performance
 
-- Training Accuracy: ~84%
-- Test Accuracy: ~80%
+- Training Accuracy: ~96%
+- Test Accuracy: ~91%
 - Evaluated using:
   - Accuracy
   - Confusion Matrix
