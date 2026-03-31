@@ -4,8 +4,7 @@
   "framework": "vite",
   "functions": {
     "api/**/*.py": {
-      "includeFiles": "api/heart_model.pkl",
-      "excludeFiles": "{src/**,dist/**,public/**,node_modules/**,heart_disease_data.csv,heart_disease_prediction.py,README.md,readme.md,package*.json,vite.config.js,.vscode/**}"
+      "excludeFiles": "{src/**,dist/**,public/**,node_modules/**,heart_disease_data.csv,heart_disease_prediction.py,README.md,readme.md,package*.json,vite.config.js,.vscode/**,convert.py,test_pickle.py}"
     }
   },
   "rewrites": [
