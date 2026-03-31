@@ -4,11 +4,20 @@ import pickle
 import os
 import json
 
+import traceback
+
 app = Flask(__name__)
 CORS(app)
 
-model_path = os.path.join(os.path.dirname(__file__), "heart_model.pkl")
-model = pickle.load(open(model_path, "rb"))
+model = None
+model_error = None
+try:
+    import pickle
+    model_path = os.path.join(os.path.dirname(__file__), "heart_model.pkl")
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
+except Exception as e:
+    model_error = f"{str(e)}\n{traceback.format_exc()}"
 
 FEATURE_NAMES = [
     "age",
@@ -27,6 +36,9 @@ FEATURE_NAMES = [
 
 @app.route("/api/predict", methods=["POST"])
 def predict():
+    if model is None:
+        return jsonify({"error": "Failed to load model", "details": model_error}), 500
+
     try:
         data = request.get_json()
 
